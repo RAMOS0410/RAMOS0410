@@ -1,0 +1,25 @@
+.encabezado{
+    background-color: #7e3707;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.contenedor{
+    background-color: #937a48;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    display: flex;
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+body{
+    background-image: url(https://image.slidesdocs.com/responsive-images/background/voucher-coffee-brown-simple-powerpoint-background_cbc914247b__960_540.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

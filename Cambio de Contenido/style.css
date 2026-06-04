@@ -1,0 +1,418 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+:root {
+    --bg-primary: #f4f6f9;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --accent-color: #3498db;
+    --accent-success: #2ecc71;
+    --accent-warning: #f1c40f;
+    --accent-danger: #e74c3c;
+    --accent-purple: #9b59b6;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-sidebar: #1e293b;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   2. DISEÑO DEL LAYOUT (SIDEBAR Y CONTENEDOR PRINCIPAL)
+   ========================================================================== */
+#sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0.75rem 1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+header {
+    background-color: var(--bg-sidebar);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.view-section {
+    padding: 2rem;
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.view-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   3. ESTILOS DE COMPONENTES REUTILIZABLES (TARJETAS, BOTONES)
+   ========================================================================== */
+.grid-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary { background-color: var(--accent-color); color: white; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-success { background-color: var(--accent-success); color: white; }
+.btn-danger { background-color: var(--accent-danger); color: white; }
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    outline: none;
+}
+
+/* ==========================================================================
+   4. VISTA: COMPONENTE TODO (GESTIÓN DE TAREAS)
+   ========================================================================== */
+.todo-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--accent-color);
+}
+
+.todo-item.completed {
+    border-left-color: var(--accent-success);
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+}
+
+/* ==========================================================================
+   5. VISTA: COMPONENTE POMODORO
+   ========================================================================== */
+.pomodoro-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.timer-display {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.timer-modes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   6. VISTA: DIARIO PERSONAL
+   ========================================================================== */
+.journal-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.journal-sidebar {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.journal-list-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.journal-list-item:hover {
+    background-color: var(--bg-primary);
+}
+
+/* ==========================================================================
+   7. VISTA: SEGUIDOR DE HÁBITOS
+   ========================================================================== */
+.habit-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.habit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-primary);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+}
+
+.habit-days {
+    display: flex;
+    gap: 5px;
+}
+
+.habit-day-dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.habit-day-dot.done {
+    background-color: var(--accent-success);
+    color: white;
+}
+
+/* ==========================================================================
+   8. VISTA: ANALÍTICAS Y GRÁFICOS (SVG CANVAS)
+   ========================================================================== */
+.chart-container {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-left: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.chart-bar {
+    width: 40px;
+    background-color: var(--accent-color);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: height 1s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.chart-bar::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    font-size: 0.8rem;
+    color: var(--text-main);
+}
+
+.chart-label {
+    position: absolute;
+    bottom: -25px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   9. NOTIFICACIONES Y WIDGETS
+   ========================================================================== */
+.notification-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--bg-sidebar);
+    border-left: 5px solid var(--accent-color);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transform: translateY(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.notification-toast.show {
+    transform: translateY(0);
+}

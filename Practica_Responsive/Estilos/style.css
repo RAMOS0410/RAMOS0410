@@ -1,0 +1,106 @@
+/*Aplica un calculo mas orientado de tamaños*/
+*{
+    box-sizing: border-box;
+}
+/*estilos generales del cuerpo de la pagina*/
+body{
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 1.6;
+background-color: azure;
+color: black;
+}
+/*las imagenes no se salen de su contenedor*/
+img{
+    max-width: 100px;
+    height: auto;
+    display: block;
+}
+/*Encabezado principal*/
+.encabezado{
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+/*Navegacion en columna para celular*/
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+/*Estilo de enlaces del menu*/
+nav a{
+    color: white;
+    text-decoration: none;
+    background-color: brown;
+    padding: 10px;
+    border-radius: 6px;
+}
+/*seccion principal*/
+.hero{
+    padding: 30px 20px;
+    text-align: center;
+    background-color: white;
+}
+/*boton principal*/
+.boton{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+/*seccion de servicios*/
+.seccion-sevicios{
+    padding: 30px 20px;
+}
+/*contenedor de tarjetas en columna para celuar*/
+.contenedor-tarjetas{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/*tarjeta individual*/
+.tarjeta{
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.15);
+}
+/*Titulo dentro de la tarjeta*/
+.tarjeta h3{
+    color: greenyellow;
+}
+/*pie de pagina*/
+footer{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+/*Estilos para pantalla medianas o grandes*/
+/*cuando la pantalla mida 768 pixeles o mas, las tarjetas
+cambiaran de columna o fila*/
+@media(min-width: 768px){
+    /*el menu cambia de columna a fila*/
+    nav{
+        flex-direction: row;
+        justify-content: center;
+    }
+    /*la seccion principal gana mas espacio*/
+    .hero{
+        padding: 60px 80px;
+    }
+    /*las tarjetas cambian de columnas a fila*/
+    .contenedor-tarjetas{
+        flex-direction: row;
+    }
+    /*cada tarjeta ocupe el mismo espacio*/
+    .tarjeta{
+        flex: 1;
+    }
+}

@@ -1,0 +1,30 @@
+.encabezado{
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    text-align: center;
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+}
+.tarjeta{
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 20px;
+}
+.Nombre{
+    border-radius: 20px;
+}
+button{
+    border-radius: 10px;
+}
+div{
+    font-family: Arial, Helvetica, sans-serif;
+}

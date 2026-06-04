@@ -1,0 +1,30 @@
+.tarjeta {
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease; 
+    background-color: #f0f0f0; 
+}
+button{
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fondo-navidad {
+    background-color: #d63031; 
+    color: white;
+}
+
+.fondo-valentin {
+    background-color: #ff7675; 
+    color: white;
+}
+
+.fondo-madre {
+    background-color: #fd79a8; 
+    color: white;
+}
+
+.fondo-padre {
+    background-color: #74b9ff; 
+    color: white;
+}

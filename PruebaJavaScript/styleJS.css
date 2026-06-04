@@ -1,0 +1,10 @@
+.modo-oscuro{
+    background-color: black;
+    color: white;
+}
+.modo-oscuro .tarjeta{
+    background-color: black;
+    color: white;
+    border-left-color: yellow;
+    
+}

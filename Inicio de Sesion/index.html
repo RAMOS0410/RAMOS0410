@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="contenedor">
+        <section class="login-card" id="logincard">
+            <h1>Inicio de sesión</h1>
+            <p class="descripcion>">Ingrese sus credenciales para acceder al sistema</p>
+            <!--formulario de acceso-->
+            <form id="formLogin">
+                <div class="grupo">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" placeholder="Ingrese su usuario">
+                    <small id="errorUsuario" class="error"></small>
+                </div>
+                <div class="grupo">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" placeholder="Ingrese su contraseña">
+                    <small id="errorContraseña" class="error"></small>
+                </div>
+                <div class="opciones">
+                    <label>
+                        <input type="checkbox" id="mostrarClave">
+                        Mostar Contraseña 
+                    </label>
+                </div>
+                <button type="submit">Ingresar</button>
+                <p id="mensajeGeneral" class="mensaje"></p>
+            </form>
+        </section>
+        <!--Panel que se mostrara si el usuario ingresa correctamente-->
+        <section class="panel oculto" id="panelBienvenida">
+            <h2>Acceso cooncedido</h2>
+            <p>Bienvenido/a, <strong id="nombreUsuario"></strong>
+            </p>
+            <button id="btnCerrarSesion">Cerrar sesion</button>
+        </section>
+    </main>
+</body>
+</html>
