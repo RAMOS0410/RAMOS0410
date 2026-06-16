@@ -1,0 +1,5 @@
+body { font-family: sans-serif; padding: 20px; text-align: center;}
+form { display: flex; flex-direction: column; max-width: 300px; gap: 10px; text-align: left; margin: 0 auto; }
+input, textarea { padding: 8px; }
+button { background: blue; color: white; border: none; padding: 10px; cursor: pointer; }
+#mensajeSalida { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; }
